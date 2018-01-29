@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class queue{
+class Queue{
   private:
     int front, rear, size, queueSize;
     int* arr;
@@ -17,9 +17,9 @@ class queue{
     }
 
   public:
-    queue(int s){
+    Queue(int s){
       front=-1;
-      rear=-1;
+      rear=0;
       queueSize=0;
       size = s;
       arr = new int[size]();
@@ -30,7 +30,7 @@ class queue{
         cout<<"Overflow\n";
         return;
       }
-      front=(front++)%size;
+      front=(front+1)%size;
       queueSize++;
       arr[front]=x;
       return;
@@ -42,24 +42,32 @@ class queue{
         return -1;
       }
       int result = arr[rear];
-      rear=(rear++)%size;
+      rear=(rear+1)%size;
       queueSize--;
       return result;
+    }
+
+    int Front(){
+      return arr[front];
+    }
+
+    int Rear(){
+      return arr[rear];
     }
 
 };
 
 
 int main(){
-  queue Q(10);
+  Queue Q(10);
   int elem=0;
   while(1){
     cin>>elem;
     if(elem==-1) break;
-    if (elem==-2) {
+    else if (elem==-2) {
       cout<<Q.dequeue()<<endl;
     }
-    Q.enqueue(elem);
+    else Q.enqueue(elem);
   }
 
 }
