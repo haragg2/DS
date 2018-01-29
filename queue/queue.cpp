@@ -3,24 +3,24 @@ using namespace std;
 
 class queue{
   private:
-    int front=-1;
-    int rear=-1;
-    int queueSize=0;
-    int size=0;
+    int front, rear, size, queueSize;
     int* arr;
 
     bool isFull(){
       if (queueSize==size)return true;
-      else false;
+      else return false;
     }
 
     bool isEmpty(){
       if (queueSize==0)return true;
-      else false;
+      else return false;
     }
 
   public:
     queue(int s){
+      front=-1;
+      rear=-1;
+      queueSize=0;
       size = s;
       arr = new int[size]();
     }
